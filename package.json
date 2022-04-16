@@ -1,0 +1,25 @@
+{
+  "name": "qrhunt",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.5.10",
+    "@vue/apollo-composable": "^4.0.0-alpha.16",
+    "apollo": "^2.33.10",
+    "graphql": "^16.3.0",
+    "graphql-tag": "^2.12.6",
+    "sweetalert2": "^11.4.8",
+    "vue": "^3.2.25",
+    "vue-qrcode-reader": "3.1.0-vue3-compatibility.2",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "vite": "^2.9.2"
+  }
+}
