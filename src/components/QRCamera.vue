@@ -14,7 +14,7 @@ import {ref} from 'vue'
 const emit = defineEmits(['decoded'])
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 let QRValue = ref('')
-let camera = ref('PREFERRED')
+let camera = ref('rear')
 let noRearCamera = ref(false)
 let noFrontCamera = ref(false)
 async function  onDecode (content) {
@@ -75,11 +75,13 @@ function switchCamera () {
       camera.value = 'rear'
       break
     case 'rear':
-      camera.value = 'PREFERRED'
-      break
-    case 'PREFERRED':
       camera.value = 'front'
       break
   }
 }
 </script>
+<style>
+.home {
+  max-height: 50vh;
+}
+</style>

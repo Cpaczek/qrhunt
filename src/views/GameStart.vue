@@ -39,6 +39,7 @@ function onDecode(content){
       icon: 'error',
       confirmButtonText: 'Retry'
     })
+    return
   }
   //store userID in local storage
   localStorage.setItem('userID', parsed.userID)
