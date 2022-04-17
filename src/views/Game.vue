@@ -114,7 +114,7 @@ let manualOverride = ref('')
 let scanning = ref(false)
 let hint = ref('This is the default hint')
 let userID = localStorage.getItem('userID')
-let debug = ref(true)
+let debug = ref(false)
 async function submitEgg(){
 
   let egg = await findEgg({
