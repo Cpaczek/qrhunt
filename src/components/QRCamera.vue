@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <qrcode-stream  @decode="onDecode" :camera="camera" @init="onInit">
-      <button @click="switchCamera">
+  <div class="camera">
+    <qrcode-stream class="video"  @decode="onDecode" :camera="camera" @init="onInit">
+      <button class="bg-white" @click="switchCamera">
         <img src="../assets/camera-switch.svg" alt="switch camera">
       </button>
     </qrcode-stream>
@@ -14,7 +14,7 @@ import {ref} from 'vue'
 const emit = defineEmits(['decoded'])
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 let QRValue = ref('')
-let camera = ref('rear')
+let camera = ref('auto')
 let noRearCamera = ref(false)
 let noFrontCamera = ref(false)
 async function  onDecode (content) {
@@ -32,22 +32,7 @@ async function  onDecode (content) {
   }
   emit('decoded', content);
 }
-// function paintOutline (detectedCodes, ctx) {
-//   for (const detectedCode of detectedCodes) {
-//     const [ firstPoint, ...otherPoints ] = detectedCode.cornerPoints
-//
-//     ctx.strokeStyle = "red";
-//
-//     ctx.beginPath();
-//     ctx.moveTo(firstPoint.x, firstPoint.y);
-//     for (const { x, y } of otherPoints) {
-//       ctx.lineTo(x, y);
-//     }
-//     ctx.lineTo(firstPoint.x, firstPoint.y);
-//     ctx.closePath();
-//     ctx.stroke();
-//   }
-// }
+
 async function onInit (promise) {
   try {
     await promise
@@ -69,7 +54,6 @@ async function onInit (promise) {
   }
 }
 function switchCamera () {
-  console.log('switch camera', camera.value)
   switch (camera.value) {
     case 'front':
       camera.value = 'rear'
@@ -80,8 +64,14 @@ function switchCamera () {
   }
 }
 </script>
-<style>
-.home {
-  max-height: 50vh;
+<style scoped>
+.camera {
+  display: flex;
+  flex-direction: column;
+}
+.video{
+  margin: auto;
+  width: auto !important;
+  /*height: 50vh;*/
 }
 </style>

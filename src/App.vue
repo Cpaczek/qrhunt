@@ -5,9 +5,10 @@ import { DefaultApolloClient } from '@vue/apollo-composable'
 
 
 // HTTP connection to the API
+
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: 'https://localhost:3020/graphql',
+  uri: import.meta.env.VITE_GRAPHQL_URL,
 })
 
 // Cache implementation
@@ -22,7 +23,10 @@ provide(DefaultApolloClient, apolloClient)
 </script>
 
 <template>
-  <router-view></router-view>
+  <div class="m-10">
+    <router-view></router-view>
+  </div>
+
 </template>
 
 <style>
