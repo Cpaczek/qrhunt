@@ -30,12 +30,6 @@ onMounted(() => {
     router.push('/game')
   }
 })
-const {mutate: createPlayer} = useMutation(gql`
-      mutation ($name: String!) {
-        createPlayer(name: $name)
-      }
-    `)
-
 function manualLogin() {
   if (manualOverride.value === '') {
     Swal.fire({
@@ -50,19 +44,7 @@ function manualLogin() {
 }
 
 async function login(name) {
-  let data
-  try{
-    data = await createPlayer({name: name})
-  }catch(e){
-    Swal.fire({
-      title: 'Error',
-      text: 'Please enter a valid ID',
-      type: 'error',
-      confirmButtonText: 'Ok'
-    })
-    return
-  }
-  localStorage.setItem('userID', data.data.createPlayer)
+  localStorage.setItem('userID', name)
   manualOverride.value = ''
   await router.push('/game')
 
